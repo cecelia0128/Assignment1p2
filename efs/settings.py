@@ -139,7 +139,7 @@ LOGIN_REDIRECT_URL = '/home'
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER	= 'cecelia8380@gmail.com'
 EMAIL_HOST_PASSWORD	= 'ceceliablog8380'
@@ -164,11 +164,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-EMAIL_HOST = 'smtp.mailtrap.io'
-EMAIL_HOST_USER = 'YOUR HOST USER'
-EMAIL_HOST_PASSWORD = 'YOUR HOST PASSWORD'
-EMAIL_PORT = 2525
-#EMAIL_USE_TLS = True
+
 
 
 try:
