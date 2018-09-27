@@ -41,10 +41,9 @@
         </thead>
          <tbody>
                 <tr>
-                    <td>{{ investment. }}</td>
-                    <td>{{ portfolio.sum_of_initial_stock_value }}</td>
-                    <td>{{ portfolio.sum_of_initial_stock_value }}</td>
-
+                    <td>{{portfolio_initial_investment}}</td>
+                    <td>{{sum_current_stocks_value | add:sum_recent_value.recent_value__sum | floatformat:"2"}}</td>
+                    <td>{{sum_current_stocks_value | add:sum_recent_value.recent_value__sum | sub:sum_of_initial_stock_value | sub:sum_acquired_value.acquired_value__sum | floatformat:"2" }}</td>
                 </tr>
             </tbody>
     </table>
@@ -78,6 +77,9 @@
                 <td>{{ stock.shares }}</td>
                 <td>{{ stock.purchase_price }}</td>
                 <td>{{ stock.initial_stock_value}}</td>
+                <td>{{ stock.current_stock_price}}</td>
+                <td>{{ stock.current_stock_value}}</td>
+                <td>{{ stock.current_stock_value | sub:stock.initial_stock_value | floatformat:"2"}}</td>
 
             </tr>
         {% endfor %}
@@ -95,7 +97,16 @@
             <th>Results</th>
         </tr>
         </thead>
+        <tbody>
+            <tr>
+                <td>{{ sum_of_initial_stock_value | floatformat:"2" }}</td>
+                <td>{{sum_current_stocks_value | floatformat:"2"}}</td>
+                <td>{{sum_current_stocks_value | sub:sum_of_initial_stock_value | floatformat:"2"}}</td>
 
+
+            </tr>
+
+        </tbody>
     </table>
 </div>
 
@@ -147,6 +158,18 @@
 
         </tr>
         </thead>
+         <tbody>
+            <tr>
+                <td>{{ totalacquired_value }}</td>
+                <td>{{ totalrecent_value }}</td>
+                <td>{{investment_results}}</td>
+
+
+
+
+            </tr>
+        </tbody>
+
     </table>
 </div>
 

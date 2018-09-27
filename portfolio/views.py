@@ -14,7 +14,6 @@ from django.shortcuts import render
 
 
 
-
 now = timezone.now()
 def home(request):
    return render(request, 'portfolio/home.html',
@@ -163,18 +162,36 @@ def portfolio(request, pk):
     # Initialize the value of the stocks
     sum_current_stocks_value = 0
     sum_of_initial_stock_value = 0
+    totalacquired_value =0
+    totalacquired_value = sum_acquired_value['acquired_value__sum']
+    totalrecent_value = 0
+    totalrecent_value = sum_recent_value['recent_value__sum']
+    investment_results = 0
+    investment_results = totalrecent_value - totalacquired_value
+
+
 
     # Loop through each stock and add the value to the total
     for stock in stocks:
         sum_current_stocks_value += stock.current_stock_value()
         sum_of_initial_stock_value += stock.initial_stock_value()
 
+
+    portfolio_initial_investment = 0
+    portfolio_initial_investment = sum_of_initial_stock_value + totalacquired_value
+
+
     return render(request, 'portfolio/portfolio.html', {'customers': customers, 'investments': investments,
                                                         'stocks': stocks,
                                                         'sum_acquired_value': sum_acquired_value,
                                                         'sum_recent_value': sum_recent_value,
                                                         'sum_current_stocks_value': sum_current_stocks_value,
-                                                        'sum_of_initial_stock_value': sum_of_initial_stock_value})
+                                                        'sum_of_initial_stock_value': sum_of_initial_stock_value,
+                                                        'totalacquired_value': totalacquired_value,
+                                                        'totalrecent_value': totalrecent_value,
+                                                        'investment_results': investment_results,
+                                                        'portfolio_initial_investment': portfolio_initial_investment
+                                                        })
 # List at the end of the views.py
 # Lists all customers
 class CustomerList(APIView):
