@@ -18,3 +18,4 @@ class InvestmentForm(forms.ModelForm):
        model = Investment
        fields = ('customer', 'category', 'description', 'acquired_value', 'acquired_date', 'recent_value','recent_date',)
 
+
